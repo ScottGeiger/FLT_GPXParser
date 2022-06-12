@@ -13,7 +13,6 @@ The following Python libraries are necessary for gpxparse to function.  Use `pip
 
 ## Usage:
 ```
-usage: gpxparse.py [-h] [-c] [-r] [-t TRACK] [-v] [-x EXCLUDE] gpxfile
 
 FLT Map GPX Segment Processor
 -----------------------------
@@ -30,8 +29,13 @@ optional arguments:
   -t TRACK, --track TRACK
                         Specify the track name to process
   -v, --verbose         Verbose mode. Multiple -v options increase the verbosity. The maximum is 3
+  -i INCLUDE, --include INCLUDE
+                        Symbol to include. Use multiple -i options for additional symbols. Cannot be used with
+                        -x/--exclude
   -x EXCLUDE, --exclude EXCLUDE
-                        Symbol to exclude. Use multiple -x options for additional symbol
+                        Symbol to exclude. Use multiple -x options for additional symbols. Cannot be used with
+                        -i/--include
+
 ```
 
 ## TODO:

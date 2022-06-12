@@ -27,10 +27,10 @@ parser = argparse.ArgumentParser(
 parser.add_argument('gpxfile',help='Specify the gpx file to process')
 symbols = parser.add_mutually_exclusive_group()
 parser.add_argument('-c','--csv',action='store_true',help='Output as CSV instead of Excel')
-symbols.add_argument('-i','--include',action='append',help='Symbol to include.  Use multiple -i options for additional symbols.  Cannot be used with -x/--exclude')
 parser.add_argument('-r','--reverse',action='store_true',help='Reverse the direction of the track')
 parser.add_argument('-t','--track',help='Specify the track name to process')
 parser.add_argument('-v','--verbose',action='count',default=0,help='Verbose mode.  Multiple -v options increase the verbosity.  The maximum is 3')
+symbols.add_argument('-i','--include',action='append',help='Symbol to include.  Use multiple -i options for additional symbols.  Cannot be used with -x/--exclude')
 symbols.add_argument('-x','--exclude',action='append',help='Symbol to exclude.  Use multiple -x options for additional symbols.  Cannot be used with -i/--include')
 args = vars(parser.parse_args())
 
