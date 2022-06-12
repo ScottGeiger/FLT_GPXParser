@@ -122,7 +122,7 @@ if args.get('exclude') is not None: logger.info('Ignoring {0} Symbols: "{1}"'.fo
 logger.info('Processed {} waypoints'.format(len(waypoints)))
 
 # Collect Track Point
-logger.info('Processing trakpoints for {}...'.format(track.name))
+logger.info('Processing trackpoints for {}...'.format(track.name))
 trkpoints = deque()
 pointNum = 0;
 for point,s,n in track.walk():
