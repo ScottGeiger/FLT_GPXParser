@@ -25,11 +25,11 @@ parser = argparse.ArgumentParser(
           The output will be Excel, however you can specify CSV via the -c (--csv) optional command parameter.
     '''))
 parser.add_argument('gpxfile',help='Specify the gpx file to process')
-symbols = parser.add_mutually_exclusive_group()
 parser.add_argument('-c','--csv',action='store_true',help='Output as CSV instead of Excel')
 parser.add_argument('-r','--reverse',action='store_true',help='Reverse the direction of the track')
 parser.add_argument('-t','--track',help='Specify the track name to process')
 parser.add_argument('-v','--verbose',action='count',default=0,help='Verbose mode.  Multiple -v options increase the verbosity.  The maximum is 3')
+symbols = parser.add_mutually_exclusive_group()
 symbols.add_argument('-i','--include',action='append',help='Symbol to include.  Use multiple -i options for additional symbols.  Cannot be used with -x/--exclude')
 symbols.add_argument('-x','--exclude',action='append',help='Symbol to exclude.  Use multiple -x options for additional symbols.  Cannot be used with -i/--include')
 args = vars(parser.parse_args())
@@ -170,9 +170,10 @@ runTotal = 0
 rows = []
 for i,segment in enumerate(gpx_track.segments):
     direction = ''
-    segDist = geopy.units.mi(meters=segment.length_2d())
+    segDist = round(geopy.units.mi(meters=segment.length_2d()),1)
     if args.get('csv'):
         runTotal += segDist
+        runTotal = round(runTotal,1)
     else: 
         runTotal = '=INDIRECT(ADDRESS(ROW(),COLUMN()-1))' if i == 0 else '=INDIRECT(ADDRESS(ROW(),COLUMN()-1))+INDIRECT(ADDRESS(ROW()-1,COLUMN()))'
     if i < len(gpx_track.segments)-1:
